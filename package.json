@@ -1,0 +1,18 @@
+{
+  "name": "the-met-quantitative",
+  "version": "1.0.0",
+  "description": "Pixi.Js version",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": "npm run build"
+  },
+  "author": "Zui ChenS",
+  "license": "ISC",
+  "dependencies": {
+    "pixi-projection": "^0.3.5",
+    "pixi.js": "^5.1.5",
+    "typescript": "^3.6.3"
+  }
+}
