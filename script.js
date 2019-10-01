@@ -26,10 +26,10 @@ for (let i=0; i<countryData.length;i++){
     country.tint = 0x384e68;
     country.alpha = doMapping(countryData[i].objectCount, 1, 2616,0.1,1);
     country.speed = Math.random()*0.005;
-    country.offset = Math.random()*1000;
+    country.offset = Math.random();
     country.interactive = true;
     country.buttonMode = true;
-    country.name = countryData[i].isoCode;
+    country.name = countryData[i].country;
     country.on('pointerdown', onTouch);
     // each country's color blocks
 
@@ -39,10 +39,12 @@ for (let i=0; i<countryData.length;i++){
 
 }
 
+const countryName = new PIXI.Text();
+app.stage.addChild(countryName);
+
 function onTouch(){
-    //
-    //
-    const objectList = countryData.find(e=>e.isoCode===this.name).objectList;
+
+    const objectList = countryData.find(e=>e.country===this.name).objectList;
     colorBlocks.clear();
     // const side = doMapping(objectList.length,1,2626,50,5);
     const side = 20;
@@ -64,6 +66,10 @@ function onTouch(){
         colorBlocks.endFill();
     }
     container.addChild(colorBlocks);
+    countryName.text = this.name;
+    countryName.x = 50;
+    countryName.y = 50;
+
 };
 
 
@@ -71,8 +77,8 @@ let tick = 0;
 app.ticker.add(()=>{
    for(let i=0; i<map.length;i++){
        const country = map[i];
-       country.x += country.speed*Math.sin(tick + country.offset)*5;
-       country.y += country.speed*Math.cos(tick + country.offset)*8;
-       tick+=1;
+       country.x += country.speed*Math.sin(tick + country.offset)*20;
+       country.y += country.speed*Math.cos(tick + country.offset)*15;
+       tick+=2*country.offset;
    }
 });
