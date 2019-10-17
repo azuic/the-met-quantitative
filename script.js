@@ -11,7 +11,7 @@ const doMapping = (m, a, b, x, y) => {
     return (m*y-a*y+b*x-m*x)/(b-a);
 };
 
-const app = new PIXI.Application({ transparent: true, width: w, height: h, antialias:true, resolution:2});
+const app = new PIXI.Application({ transparent: true, width: w, height: h, antialias:true, resolution:2,forceCanvas:true});
 document.body.appendChild(app.view);
 // PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR;
 // PIXI.settings.RENDER_OPTIONS={antialias:true, resolution:2};
