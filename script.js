@@ -4,14 +4,14 @@ const winH = window.innerHeight;
 // const w = 2800;
 // const h = 900;
 
-const w = winW;
+const w = winW+800;
 const h = 1000;
 
 const doMapping = (m, a, b, x, y) => {
     return (m*y-a*y+b*x-m*x)/(b-a);
 };
 
-const app = new PIXI.Application({ transparent: true, width: w, height: h, antialias:true, resolution:2,forceCanvas:true});
+const app = new PIXI.Application({ transparent: true, width: w, height: h, antialias:true, forceCanvas:true});
 document.body.appendChild(app.view);
 // PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR;
 // PIXI.settings.RENDER_OPTIONS={antialias:true, resolution:2};
@@ -39,7 +39,7 @@ for (let i=0; i<countryData.length;i++){
     // country.scale.set(doMapping(countryData[i].size,2180,3600950,0.02,0.5));
     // country.x = doMapping(countryData[i].latLon[1],-102.553,174.886,150,w-150);
     // country.y = doMapping(countryData[i].latLon[0],-56.264,40.901,h-50, 200);
-    country.x=100;
+    country.x=80;
     if (i===0){
         country.y=yTotal
     }else{
@@ -72,11 +72,11 @@ function onTouch(){
     // const side = doMapping(objectList.length,1,2626,50,5);
     const side = 20;
     // console.log(side);
-    const startX=450;
+    const startX=400;
     const startY=250;
     let cX=startX;
     let cY=startY;
-    const radius=12;
+    const radius=10;
     const lineWidth=5;
     // const gapX=(w-400)/550;
     // const gapY=(h-400)/500;
@@ -101,7 +101,7 @@ function onTouch(){
         // colorBlocks.drawRect(blockX+3*side*objectData[objectList[i]].percents[0]+3*side*objectData[objectList[i]].percents[1]+3*side*objectData[objectList[i]].percents[2], blockY,3*side*objectData[objectList[i]].percents[3],side);
         // colorBlocks.endFill();
         cX=startX+(i%40)*gap;
-        cY=startY+(Math.floor(i/60))*gap;
+        cY=startY+(Math.floor(i/40))*gap;
         // console.log(i%nCol,Math.floor(i/nRow));
         colorBlocks.lineStyle(lineWidth,parseInt(objectData[objectList[i]].colors[0],16),1);
         colorBlocks.arc(cX,cY,radius,0,PIXI.PI_2*objectData[objectList[i]].percents[0]);
